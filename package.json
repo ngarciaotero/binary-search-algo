@@ -1,0 +1,19 @@
+{
+  "name": "binary-search-algo",
+  "version": "1.0.0",
+  "description": "implementation of binary search tree algorithm",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "eslint": "^8.57.0",
+    "globals": "^15.9.0"
+  }
+}
