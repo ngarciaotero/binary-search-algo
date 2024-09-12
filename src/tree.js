@@ -71,5 +71,32 @@ export function tree(array) {
     return buildTree(uniqueArr);
   }
 
-  return { root };
+  function insert(value) {
+    if (root === null) {
+      root = node(value);
+      return true;
+    }
+
+    let previous = null;
+    let current = root;
+    while (current !== null) {
+      previous = current;
+      if (current.data > value) {
+        current = current.left;
+      } else if (current.data < value) {
+        current = current.right;
+      } else {
+        return false;
+      }
+    }
+
+    if (previous.data > value) {
+      previous.left = node(value);
+    } else if (previous.data < value) {
+      current.right = node(value);
+    }
+    return true;
+  }
+
+  return { root, insert };
 }
