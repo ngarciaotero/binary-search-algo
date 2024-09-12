@@ -98,5 +98,23 @@ export function tree(array) {
     return true;
   }
 
-  return { root, insert };
+  function find(value) {
+    let current = root;
+
+    while (current !== null) {
+      if (current.data === value) {
+        return current;
+      }
+
+      if (current.data > value) {
+        current = current.left;
+      } else if (current.data < value) {
+        current = current.right;
+      }
+    }
+
+    return null;
+  }
+
+  return { root, insert, find };
 }
