@@ -232,6 +232,24 @@ export function tree(array) {
     return 1 + Math.max(leftHeight, rightHeight);
   }
 
+  function depth(node) {
+    if (node === null) return -1;
+
+    let current = root;
+    let depthCount = 0;
+
+    while (current !== null) {
+      if (current === node) {
+        return depthCount;
+      }
+
+      depthCount++;
+      current = node.data < current.data ? current.left : current.right;
+    }
+
+    return -1;
+  }
+
   function logNode(node) {
     console.log(node.data);
   }
@@ -249,5 +267,6 @@ export function tree(array) {
     preOrder,
     postOrder,
     height,
+    depth,
   };
 }
