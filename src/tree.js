@@ -166,6 +166,25 @@ export function tree(array) {
     return null;
   }
 
+  function levelOrder(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("No valid callback function provided");
+    }
+
+    let queue = [root];
+    while (queue.length > 0) {
+      let current = queue.shift();
+      callback(current);
+
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+  }
+
+  const logNode = (node) => {
+    console.log(node.data);
+  };
+
   return {
     get root() {
       return root;
@@ -173,5 +192,7 @@ export function tree(array) {
     insert,
     find,
     deleteItem,
+    logNode,
+    levelOrder,
   };
 }
