@@ -250,6 +250,21 @@ export function tree(array) {
     return -1;
   }
 
+  function isBalanced(node = root) {
+    if (node === null) return true;
+
+    let leftHeight = height(node.left);
+    let rightHeight = height(node.right);
+
+    let heightDifference = Math.abs(leftHeight - rightHeight);
+
+    if (heightDifference > 1) {
+      return false;
+    } else {
+      return isBalanced(node.left) && isBalanced(node.right);
+    }
+  }
+
   function logNode(node) {
     console.log(node.data);
   }
@@ -268,5 +283,6 @@ export function tree(array) {
     postOrder,
     height,
     depth,
+    isBalanced,
   };
 }
