@@ -181,9 +181,9 @@ export function tree(array) {
     }
   }
 
-  const logNode = (node) => {
+  function logNode(node) {
     console.log(node.data);
-  };
+  }
 
   return {
     get root() {
