@@ -223,6 +223,15 @@ export function tree(array) {
     callback(current);
   }
 
+  function height(node) {
+    if (node === null) return -1;
+
+    const leftHeight = height(node.left);
+    const rightHeight = height(node.right);
+
+    return 1 + Math.max(leftHeight, rightHeight);
+  }
+
   function logNode(node) {
     console.log(node.data);
   }
@@ -239,5 +248,6 @@ export function tree(array) {
     inOrder,
     preOrder,
     postOrder,
+    height,
   };
 }
