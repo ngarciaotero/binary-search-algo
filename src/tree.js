@@ -98,6 +98,61 @@ export function tree(array) {
     return true;
   }
 
+  function deleteItem(value) {
+    const { parent, current } = findWithParent(value);
+
+    // case 1: node does not exist
+    if (current === null) {
+      return false;
+    }
+
+    // case 2: node to be removed is leaf node or has 1 child
+    if (current.left === null || current.right === null) {
+      const child = current.left || current.right;
+      if (parent === null) {
+        root = child;
+      } else if (parent.left === current) {
+        parent.left = child;
+      } else {
+        parent.right = child;
+      }
+      // case 3: node to be removed has 2 child
+    } else {
+      // let successorParent = current;
+      let successorParent = null;
+      let successor = current.right;
+
+      while (successor.left !== null) {
+        successorParent = successor;
+        successor = successor.left;
+      }
+
+      if (successorParent !== null) {
+        successorParent.left = successor.right;
+      } else {
+        current.right = successor.right;
+      }
+
+      current.data = successor.data;
+    }
+    return true;
+  }
+
+  function findWithParent(value) {
+    let parent = null;
+    let current = root;
+
+    while (current !== null) {
+      if (current.data === value) {
+        return { parent, current };
+      }
+
+      parent = current;
+      current = value < current.data ? current.left : current.right;
+    }
+    return { parent: null, current: null };
+  }
+
   function find(value) {
     let current = root;
 
@@ -111,5 +166,12 @@ export function tree(array) {
     return null;
   }
 
-  return { root, insert, find };
+  return {
+    get root() {
+      return root;
+    },
+    insert,
+    find,
+    deleteItem,
+  };
 }
