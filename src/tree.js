@@ -105,12 +105,7 @@ export function tree(array) {
       if (current.data === value) {
         return current;
       }
-
-      if (current.data > value) {
-        current = current.left;
-      } else if (current.data < value) {
-        current = current.right;
-      }
+      current = value < current.data ? current.left : current.right;
     }
 
     return null;
