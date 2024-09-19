@@ -265,6 +265,17 @@ export function tree(array) {
     }
   }
 
+  function rebalance() {
+    const values = [];
+
+    function add(node) {
+      return values.push(node.data);
+    }
+
+    inOrder(add, root);
+    root = buildTree(values);
+  }
+
   function logNode(node) {
     console.log(node.data);
   }
@@ -284,5 +295,6 @@ export function tree(array) {
     height,
     depth,
     isBalanced,
+    rebalance,
   };
 }
