@@ -209,6 +209,20 @@ export function tree(array) {
     preOrder(callback, current.right);
   }
 
+  function postOrder(callback, current = root) {
+    if (typeof callback !== "function") {
+      throw new Error("No valid callback function provided");
+    }
+
+    if (current === null) {
+      return;
+    }
+
+    postOrder(callback, current.left);
+    postOrder(callback, current.right);
+    callback(current);
+  }
+
   function logNode(node) {
     console.log(node.data);
   }
@@ -224,5 +238,6 @@ export function tree(array) {
     levelOrder,
     inOrder,
     preOrder,
+    postOrder,
   };
 }
