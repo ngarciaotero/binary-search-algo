@@ -266,6 +266,8 @@ export function tree(array) {
   }
 
   function rebalance() {
+    if (isBalanced()) return;
+
     const values = [];
 
     function add(node) {
