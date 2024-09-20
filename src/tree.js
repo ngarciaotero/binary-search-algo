@@ -92,8 +92,8 @@ export function tree(array) {
 
     if (previous.data > value) {
       previous.left = node(value);
-    } else if (previous.data < value) {
-      current.right = node(value);
+    } else {
+      previous.right = node(value);
     }
     return true;
   }
