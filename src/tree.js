@@ -118,7 +118,6 @@ export function tree(array) {
       }
       // case 3: node to be removed has 2 child
     } else {
-      // let successorParent = current;
       let successorParent = null;
       let successor = current.right;
 
