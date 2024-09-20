@@ -277,10 +277,6 @@ export function tree(array) {
     root = buildTree(values);
   }
 
-  function logNode(node) {
-    console.log(node.data);
-  }
-
   return {
     get root() {
       return root;
@@ -288,7 +284,6 @@ export function tree(array) {
     insert,
     find,
     deleteItem,
-    logNode,
     levelOrder,
     inOrder,
     preOrder,
